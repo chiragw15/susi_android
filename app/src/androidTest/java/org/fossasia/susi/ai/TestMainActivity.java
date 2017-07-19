@@ -29,11 +29,11 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+
 /**
- * <h1>Unit Test for testing main activity.</h1>
- *
  * Created by abhinavtyagi on 09/10/16.
  */
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -44,12 +44,6 @@ public class TestMainActivity {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
-    /**
-     * Unlock screen.
-     *
-     * @throws IOException          the io exception
-     * @throws InterruptedException the interrupted exception
-     */
     @Before
     public void unlockScreen() throws IOException, InterruptedException {
         Log.d(TAG,"running unlockScreen..");
@@ -63,8 +57,8 @@ public class TestMainActivity {
             }
         };
         activity.runOnUiThread(wakeUpDevice);
-
     }
+
 
     /**
      * Test activity_main items visibility on launch of app
@@ -82,8 +76,12 @@ public class TestMainActivity {
         // checks if message box is present
         onView(withId(R.id.et_message)).check(matches(isDisplayed()));
 
+        // checks if send button is present ... removed in revision of UI
+//        onView(withId(R.id.btn_send)).check(matches(isDisplayed()));
+
         // checks if microphone button is present
         onView(withId(R.id.btnSpeak)).check(matches(isDisplayed()));
+
     }
 
     /**
@@ -110,6 +108,7 @@ public class TestMainActivity {
 
         // checks if log out setting menu item is not present
         onView(withId(R.id.action_logout)).check(doesNotExist());
+
     }
 
     /**
@@ -128,8 +127,9 @@ public class TestMainActivity {
         // checks if wallpaper setting menu item is present
         onView(withText(R.string.action_wall_settings)).check(matches(isDisplayed()));
 
-        // checks if log out/log in setting menu item is present
+        // checks if log out setting menu item is present
         onView(withText(R.string.action_log_out)).check(matches(isDisplayed()));
+
     }
 
     /**
@@ -140,13 +140,6 @@ public class TestMainActivity {
         Log.d(TAG,"running test04_SearchButtonClickUIChanges..");
 
         // enter text to chat
-        onView(withId(R.id.et_message)).perform(click());
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         onView(withId(R.id.et_message)).perform(click()).perform(typeText("Hi! I am Unit Test"));
 
         // click send button
@@ -175,5 +168,7 @@ public class TestMainActivity {
 
         // checks if log out setting menu item is not present
         onView(withId(R.id.action_logout)).check(doesNotExist());
+
     }
+
 }
