@@ -8,7 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 import android.view.WindowManager;
 
-import org.fossasia.susi.ai.activities.LoginActivity;
+import org.fossasia.susi.ai.login.LoginActivity;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
