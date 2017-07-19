@@ -3,7 +3,9 @@ package org.fossasia.susi.ai.helper;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.google.gson.Gson;
+
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
 import org.fossasia.susi.ai.MainApplication;
 import org.fossasia.susi.ai.rest.clients.BaseUrl;
@@ -21,7 +23,8 @@ public class PrefManager {
     private static final String SUSI_BASE_URLS = "preferences_base_urls";
     private static final String SUSI_RUNNING_BASE_URL = "preferences_running_base_url";
 
-    private static Gson gson = new Gson();
+    private static Moshi moshi = new Moshi.Builder().build();
+    private static JsonAdapter<SusiBaseUrls> jsonAdapter = moshi.adapter(SusiBaseUrls.class);
 
     private static SharedPreferences getPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(MainApplication.getInstance()
@@ -196,7 +199,7 @@ public class PrefManager {
      * @param susiBaseUrls Susi All base urls
      */
     public static void saveBaseUrls(SusiBaseUrls susiBaseUrls) {
-        putString(SUSI_BASE_URLS, gson.toJson(susiBaseUrls));
+        putString(SUSI_BASE_URLS, jsonAdapter.toJson(susiBaseUrls));
     }
 
     /**
@@ -205,7 +208,11 @@ public class PrefManager {
      * @return SusiBaseUrls base urls
      */
     public static SusiBaseUrls getBaseUrls() {
-        return gson.fromJson(getString(SUSI_BASE_URLS, "null"), SusiBaseUrls.class);
+        try {
+           return jsonAdapter.fromJson(getString(SUSI_BASE_URLS, "null"));
+        } catch (Exception e ) {
+            return null;
+        }
     }
 
 

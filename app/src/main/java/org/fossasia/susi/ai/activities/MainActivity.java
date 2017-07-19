@@ -433,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<MemoryResponse> call, Response<MemoryResponse> response) {
                     if (response != null && response.isSuccessful() && response.body() != null) {
-                        List<SusiResponse> allMessages = response.body().getCognitionsList();
+                        List<SusiResponse> allMessages = response.body().getCognitions();
                         if(allMessages.size() == 0) {
                             showToast("No messages found");
                         } else {

@@ -7,7 +7,7 @@ import org.fossasia.susi.ai.rest.services.SusiService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 
 /**
  * Created by saurabh on 1/10/16.
@@ -50,7 +50,7 @@ public class ClientBuilder {
         try {
             retrofit = new Retrofit.Builder()
                     .baseUrl(PrefManager.getSusiRunningBaseUrl())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(MoshiConverterFactory.create())
                     .client(httpClient.build())
                     .build();
             init();

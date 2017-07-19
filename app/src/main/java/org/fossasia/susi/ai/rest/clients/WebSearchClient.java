@@ -1,7 +1,7 @@
 package org.fossasia.susi.ai.rest.clients;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 
 /**
  * <h1>Class to get retrofit client to get websearch results.</h1>
@@ -22,7 +22,7 @@ public class WebSearchClient {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(MoshiConverterFactory.create())
                     .build();
         }
         return retrofit;
