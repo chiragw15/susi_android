@@ -22,6 +22,6 @@ then
 
 	git push origin apk --force --quiet > /dev/null
 
-	curl https://$APPETIZE_API_TOKEN@api.appetize.io/v1/apps/mbpprq4xj92c119j7nxdhttjm0 -H 'Content-Type: application/json' -d '{"url":"https://github.com/chiragw15/susi_android/raw/apk/susi-debug.apk", "note": "$CIRCLE_SHA1"}'
+	curl https://$APPETIZE_API_TOKEN@api.appetize.io/v1/apps/mbpprq4xj92c119j7nxdhttjm0 -H 'Content-Type: application/json' -d '{"url":"https://github.com/chiragw15/susi_android/raw/apk/susi-debug.apk", "note": $CIRCLE_SHA1}'
 fi
 
