@@ -2,7 +2,7 @@ package org.fossasia.susi.ai;
 
 import android.app.Application;
 
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -30,12 +30,12 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if (LeakCanary.isInAnalyzerProcess(this)) {
+        //if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install(this);
+          //  return;
+        //}
+        //LeakCanary.install(this);
 
 //        For Developers: Uncomment the below line after adding the API KEYS
 //        for Instructions check the README.md
